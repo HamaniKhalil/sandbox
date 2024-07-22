@@ -7,25 +7,44 @@ import com.example.sandbox.stepper.data.RegisteredUser
 
 fun main() {
 
-    val aggregator = aggregatorFrom<RegisteredUser>()
-    aggregator.addStep(
+    val profile = Milestone(
+        support = "profile",
+        next = null,
+    )
+    val login = Milestone(
+        support = "login",
+        next = profile,
+    )
+    val roadmap = Stepper.RoadmapBuilder<String>()
+        .addMilestone(login)
+        .addMilestone(profile)
+        .build()
+
+    val stepper = Stepper(roadmap)
+
+    stepper.next(
         Step(
             content = Credentials(
                 username = "user",
                 password = "pass"
-            )
-        )
+            ),
+            milestone = login,
+        ),
     )
-    aggregator.addStep(
+    stepper.next(
         Step(
             content = Profile(
                 firstname = "First",
                 lastname = "Last",
                 age = 20,
-            )
+            ),
+            milestone = profile,
         )
     )
 
-//    println(aggregator.aggregate())
-    println(aggregator.aggregate<RegisteredUser>())
+    println(stepper.aggregate<RegisteredUser>())
+
+    println(stepper.current.support)
+    stepper.previous()
+    println(stepper.current.support)
 }
