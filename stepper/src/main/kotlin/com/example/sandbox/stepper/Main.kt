@@ -1,9 +1,5 @@
 package com.example.sandbox.stepper
 
-import com.example.sandbox.stepper.data.Credentials
-import com.example.sandbox.stepper.data.Profile
-import com.example.sandbox.stepper.data.RegisteredUser
-
 
 fun main() {
 

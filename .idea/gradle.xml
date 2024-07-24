@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/flows" />
             <option value="$PROJECT_DIR$/ktor" />
             <option value="$PROJECT_DIR$/serialization" />
+            <option value="$PROJECT_DIR$/stepper" />
           </set>
         </option>
       </GradleProjectSettings>
