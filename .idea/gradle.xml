@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/ktor" />
             <option value="$PROJECT_DIR$/serialization" />
             <option value="$PROJECT_DIR$/stepper" />
+            <option value="$PROJECT_DIR$/uuid" />
           </set>
         </option>
       </GradleProjectSettings>
