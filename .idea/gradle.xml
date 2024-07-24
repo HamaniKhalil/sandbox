@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/annotations" />
             <option value="$PROJECT_DIR$/flows" />
             <option value="$PROJECT_DIR$/ktor" />
+            <option value="$PROJECT_DIR$/serialization" />
           </set>
         </option>
       </GradleProjectSettings>
