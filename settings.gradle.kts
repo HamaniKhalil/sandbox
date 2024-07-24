@@ -3,3 +3,4 @@ plugins {
 }
 rootProject.name = "sandbox"
 include("annotations")
+include("flows")
