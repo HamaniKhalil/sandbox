@@ -1,6 +1,4 @@
-package com.example.sandbox.stepper.data
-
-import com.example.sandbox.stepper.StepContent
+package com.example.sandbox.stepper
 
 @StepContent(name = "user")
 data class RegisteredUser(

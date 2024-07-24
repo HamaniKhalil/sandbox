@@ -26,7 +26,7 @@ fun KClass<*>.getNames(): List<Pair<KProperty<*>, String>> {
     memberProperties
         .forEach { prop ->
             if (prop.hasAnnotation<StepContent>()) {
-                val name = (prop.annotations.first {it is StepContent} as StepContent).name
+                val name = (prop.annotations.first {it is StepContent } as StepContent).name
                 result += prop to name
             }
 
