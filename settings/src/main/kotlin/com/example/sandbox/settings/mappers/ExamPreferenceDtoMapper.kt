@@ -1,8 +1,8 @@
-package com.example.sandbox.preferences.mappers
+package com.example.sandbox.settings.mappers
 
-import com.example.sandbox.preferences.dtos.ExamPreferenceDto
-import com.example.sandbox.preferences.models.ExamPreference
-import com.example.sandbox.preferences.util.ModelMapper
+import com.example.sandbox.settings.dtos.ExamPreferenceDto
+import com.example.sandbox.settings.models.ExamPreference
+import com.example.sandbox.settings.util.ModelMapper
 
 class ExamPreferenceDtoMapper : ModelMapper<ExamPreference<*>, ExamPreferenceDto<*>> {
     override fun to(domain: ExamPreference<*>): ExamPreferenceDto<*> =

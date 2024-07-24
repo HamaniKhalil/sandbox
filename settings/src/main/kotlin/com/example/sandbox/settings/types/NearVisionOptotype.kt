@@ -1,7 +1,7 @@
-package com.example.sandbox.preferences.types
+package com.example.sandbox.settings.types
 
-import com.example.sandbox.preferences.util.FromStorageIdRetriever
-import com.example.sandbox.preferences.util.StorageIdHolder
+import com.example.sandbox.settings.util.FromStorageIdRetriever
+import com.example.sandbox.settings.util.StorageIdHolder
 
 enum class NearVisionOptotype(override val storageId: Int) : StorageIdHolder {
     ROTARY(1),

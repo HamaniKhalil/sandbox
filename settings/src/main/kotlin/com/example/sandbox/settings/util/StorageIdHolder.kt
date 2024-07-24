@@ -1,4 +1,4 @@
-package com.example.sandbox.preferences.util
+package com.example.sandbox.settings.util
 
 interface StorageIdHolder {
     val storageId: Int
