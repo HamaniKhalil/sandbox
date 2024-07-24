@@ -1,9 +1,9 @@
-package com.example.sandbox.preferences.models
+package com.example.sandbox.settings.models
 
-import com.example.sandbox.preferences.types.BiocularMethod
-import com.example.sandbox.preferences.types.NearVisionOptotype
-import com.example.sandbox.preferences.util.FromStorageIdRetriever
-import com.example.sandbox.preferences.util.StorageIdHolder
+import com.example.sandbox.settings.types.BiocularMethod
+import com.example.sandbox.settings.types.NearVisionOptotype
+import com.example.sandbox.settings.util.FromStorageIdRetriever
+import com.example.sandbox.settings.util.StorageIdHolder
 
 enum class ExamPreferenceType(override val storageId: Int, val options: Set<Any>) : StorageIdHolder {
     BIOCULAR_METHOD(1, BiocularMethod.entries.toSet()),

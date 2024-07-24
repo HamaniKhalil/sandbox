@@ -1,4 +1,4 @@
-package com.example.sandbox.preferences.util
+package com.example.sandbox.settings.util
 
 interface FromStorageIdRetriever<T> {
     fun fromStorageId(id: Int): T

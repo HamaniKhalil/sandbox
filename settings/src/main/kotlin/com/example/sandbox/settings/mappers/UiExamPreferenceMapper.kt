@@ -1,8 +1,8 @@
-package com.example.sandbox.preferences.mappers
+package com.example.sandbox.settings.mappers
 
-import com.example.sandbox.preferences.models.ExamPreference
-import com.example.sandbox.preferences.ui.UiExamPreference
-import com.example.sandbox.preferences.util.ModelMapper
+import com.example.sandbox.settings.models.ExamPreference
+import com.example.sandbox.settings.ui.UiExamPreference
+import com.example.sandbox.settings.util.ModelMapper
 
 class UiExamPreferenceMapper : ModelMapper<ExamPreference<*>, UiExamPreference<*>> {
     override fun to(domain: ExamPreference<*>): UiExamPreference<*> =

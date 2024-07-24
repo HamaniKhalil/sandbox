@@ -1,4 +1,4 @@
-package com.example.sandbox.preferences.models
+package com.example.sandbox.settings.models
 
 data class ExamPreference<T>(
     val id: Int,

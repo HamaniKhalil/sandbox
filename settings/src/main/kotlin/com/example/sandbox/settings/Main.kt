@@ -1,11 +1,11 @@
-package com.example.sandbox.preferences
+package com.example.sandbox.settings
 
-import com.example.sandbox.preferences.mappers.ExamPreferenceDtoMapper
-import com.example.sandbox.preferences.mappers.UiExamPreferenceMapper
-import com.example.sandbox.preferences.models.ExamPreference
-import com.example.sandbox.preferences.models.ExamPreferenceType.*
-import com.example.sandbox.preferences.types.BiocularMethod.ALTERNATE_OCCLUSION
-import com.example.sandbox.preferences.types.NearVisionOptotype.PARINAUD
+import com.example.sandbox.settings.mappers.ExamPreferenceDtoMapper
+import com.example.sandbox.settings.mappers.UiExamPreferenceMapper
+import com.example.sandbox.settings.models.ExamPreference
+import com.example.sandbox.settings.models.ExamPreferenceType.*
+import com.example.sandbox.settings.types.BiocularMethod.ALTERNATE_OCCLUSION
+import com.example.sandbox.settings.types.NearVisionOptotype.PARINAUD
 
 fun main() {
     println("==================================")
