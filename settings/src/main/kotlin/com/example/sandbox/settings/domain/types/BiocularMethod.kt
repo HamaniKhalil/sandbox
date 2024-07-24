@@ -1,4 +1,4 @@
-package com.example.sandbox.settings.types
+package com.example.sandbox.settings.domain.types
 
 import com.example.sandbox.settings.util.FromStorageIdRetriever
 import com.example.sandbox.settings.util.StorageIdHolder

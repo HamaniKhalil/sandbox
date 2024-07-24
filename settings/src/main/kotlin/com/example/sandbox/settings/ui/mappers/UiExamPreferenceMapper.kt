@@ -1,7 +1,7 @@
-package com.example.sandbox.settings.mappers
+package com.example.sandbox.settings.ui.mappers
 
-import com.example.sandbox.settings.models.ExamPreference
-import com.example.sandbox.settings.ui.UiExamPreference
+import com.example.sandbox.settings.domain.models.ExamPreference
+import com.example.sandbox.settings.ui.model.UiExamPreference
 import com.example.sandbox.settings.util.ModelMapper
 
 class UiExamPreferenceMapper : ModelMapper<ExamPreference<*>, UiExamPreference<*>> {
