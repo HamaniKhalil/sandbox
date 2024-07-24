@@ -1,7 +1,7 @@
-package com.example.sandbox.settings.mappers
+package com.example.sandbox.settings.remote.mappers
 
-import com.example.sandbox.settings.dtos.ExamPreferenceDto
-import com.example.sandbox.settings.models.ExamPreference
+import com.example.sandbox.settings.remote.dtos.ExamPreferenceDto
+import com.example.sandbox.settings.domain.models.ExamPreference
 import com.example.sandbox.settings.util.ModelMapper
 
 class ExamPreferenceDtoMapper : ModelMapper<ExamPreference<*>, ExamPreferenceDto<*>> {

@@ -1,7 +1,7 @@
-package com.example.sandbox.settings.models
+package com.example.sandbox.settings.domain.models
 
-import com.example.sandbox.settings.types.BiocularMethod
-import com.example.sandbox.settings.types.NearVisionOptotype
+import com.example.sandbox.settings.domain.types.BiocularMethod
+import com.example.sandbox.settings.domain.types.NearVisionOptotype
 import com.example.sandbox.settings.util.FromStorageIdRetriever
 import com.example.sandbox.settings.util.StorageIdHolder
 
