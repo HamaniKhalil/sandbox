@@ -1,9 +1,16 @@
 package com.example.sandbox.settings.remote.dtos
 
-import com.example.sandbox.settings.domain.models.ExamPreferenceType
+import com.example.sandbox.settings.remote.util.serializers.SettingValueSerializer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-data class ExamPreferenceDto<T>(
+@Serializable
+data class ExamPreferenceDto(
+    @SerialName("id")
     val id: Int,
-    val type: ExamPreferenceType,
-    val value: T,
+    @SerialName("type")
+    val type: Int,
+    @Serializable(with = SettingValueSerializer::class)
+    @SerialName("value")
+    val value: Any,
 )
