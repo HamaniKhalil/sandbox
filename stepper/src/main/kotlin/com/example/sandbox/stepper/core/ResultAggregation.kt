@@ -1,19 +1,31 @@
-package com.example.sandbox.stepper
+package com.example.sandbox.stepper.core
 
+import kotlin.reflect.KAnnotatedElement
 import kotlin.reflect.KProperty
+import kotlin.reflect.full.hasAnnotation
 import kotlin.reflect.full.primaryConstructor
 
 inline fun <reified R> aggregate(
     steps: List<Step<*, *>>,
     size: Int = Int.MAX_VALUE, // No limit for now
 ): R {
-    if (!R::class.isData)
-        throw IllegalArgumentException(
-            """
+    when {
+        !R::class.isData ->
+            throw IllegalArgumentException(
+                """
                 The inferred type should be a data class, you should consider transforming ${R::class} to a data class
                 before using this method
                 """
-        )
+            )
+
+        !R::class.hasAnnotation<AggregationResult>() ->
+            throw IllegalArgumentException(
+                """
+                The inferred data class result should be annotated with ${AggregationResult::class.simpleName}
+                """
+            )
+    }
+
 
     if (size < steps.size)
         throw IllegalArgumentException(

@@ -1,4 +1,6 @@
-package com.example.sandbox.stepper
+package com.example.sandbox.stepper.core
+
+import com.example.sandbox.stepper.Milestone
 
 class Step<T, S>(
     @StepContent("content")
