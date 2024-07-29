@@ -14,8 +14,16 @@ enum class ExamPreferenceType(override val storageId: Int, val options: Set<Any>
     FAR_VISION_OPTOTYPE(7, OptotypeCategory.entries.toSet()),
     ;
 
+    fun formatValue(value: Any): Any =
+        when (this) {
+            BIOCULAR_METHOD, CYLINDER_DISPLAY, ACUITY_UNIT, NEAR_VISION_OPTOTYPE, FAR_VISION_OPTOTYPE ->
+                (value as StorageIdHolder).storageId
+            EXAM_DURATION_DISPLAY -> value as Boolean
+            RED_GREEN_TEST -> value as Boolean
+        }
+
     fun parseValue(value: Any): Any =
-        when(this) {
+        when (this) {
             BIOCULAR_METHOD -> BiocularMethod.fromStorageId(value as Int)
             CYLINDER_DISPLAY -> CylinderDisplay.fromStorageId(value as Int)
             ACUITY_UNIT -> VisualAcuityUnit.fromStorageId(value as Int)

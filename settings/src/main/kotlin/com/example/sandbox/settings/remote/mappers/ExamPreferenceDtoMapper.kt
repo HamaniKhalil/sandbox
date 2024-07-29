@@ -7,11 +7,13 @@ import com.example.sandbox.settings.util.ModelMapper
 
 class ExamPreferenceDtoMapper : ModelMapper<ExamPreference<Any>, ExamPreferenceDto> {
     override fun to(domain: ExamPreference<Any>): ExamPreferenceDto =
-        ExamPreferenceDto(
-            id = domain.id,
-            type = domain.type.storageId,
-            value = domain.value,
-        )
+        with(domain.type) {
+            ExamPreferenceDto(
+                id = domain.id,
+                type = storageId,
+                value = formatValue(domain.value),
+            )
+        }
 
 
     override fun from(destination: ExamPreferenceDto): ExamPreference<Any> =
