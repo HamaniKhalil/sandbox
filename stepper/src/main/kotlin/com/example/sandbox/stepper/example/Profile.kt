@@ -1,4 +1,6 @@
-package com.example.sandbox.stepper
+package com.example.sandbox.stepper.example
+
+import com.example.sandbox.stepper.core.StepContent
 
 data class Profile(
     @StepContent(name = "firstname")

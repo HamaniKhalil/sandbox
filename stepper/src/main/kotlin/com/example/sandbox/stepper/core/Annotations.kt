@@ -1,4 +1,4 @@
-package com.example.sandbox.stepper
+package com.example.sandbox.stepper.core
 
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty

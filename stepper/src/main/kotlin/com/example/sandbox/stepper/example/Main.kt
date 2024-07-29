@@ -1,4 +1,8 @@
-package com.example.sandbox.stepper
+package com.example.sandbox.stepper.example
+
+import com.example.sandbox.stepper.Milestone
+import com.example.sandbox.stepper.core.Step
+import com.example.sandbox.stepper.core.Stepper
 
 
 fun main() {
