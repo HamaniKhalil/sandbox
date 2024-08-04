@@ -1,50 +1,38 @@
 package com.example.sandbox.stepper.example
 
-import com.example.sandbox.stepper.Milestone
-import com.example.sandbox.stepper.core.Step
+import com.example.sandbox.stepper.core.Milestone
 import com.example.sandbox.stepper.core.Stepper
+import com.example.sandbox.stepper.example.data.RegisteredUser
+import com.example.sandbox.stepper.example.screens.LoginScreen
+import com.example.sandbox.stepper.example.screens.ProfileScreen
+import com.example.sandbox.stepper.example.screens.Screen
 
 
 fun main() {
 
-    val profile = Milestone(
-        support = "profile",
-        next = null,
-    )
+    val profileScreen = ProfileScreen()
+    val profile = Milestone<Screen>(support = profileScreen)
+
+    val loginScreen = LoginScreen()
     val login = Milestone(
-        support = "login",
+        support = loginScreen,
         next = profile,
     )
-    val roadmap = Stepper.RoadmapBuilder<String>()
+
+    val roadmap = Stepper.RoadmapBuilder<Screen>()
         .addMilestone(login)
         .addMilestone(profile)
         .build()
 
     val stepper = Stepper(roadmap)
 
-    stepper.next(
-        Step(
-            content = Credentials(
-                username = "user",
-                password = "pass"
-            ),
-            milestone = login,
-        ),
-    )
-    stepper.next(
-        Step(
-            content = Profile(
-                firstname = "First",
-                lastname = "Last",
-                age = 20,
-            ),
-            milestone = profile,
-        )
-    )
+    profileScreen.attachToStepper(stepper)
+    loginScreen.attachToStepper(stepper)
+
+    while (!stepper.isLast) {
+        stepper.current.support.render()
+    }
 
     println(stepper.aggregate<RegisteredUser>())
 
-    println(stepper.current.support)
-    stepper.previous()
-    println(stepper.current.support)
 }

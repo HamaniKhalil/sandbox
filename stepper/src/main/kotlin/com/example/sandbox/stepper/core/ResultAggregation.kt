@@ -1,13 +1,12 @@
 package com.example.sandbox.stepper.core
 
-import kotlin.reflect.KAnnotatedElement
 import kotlin.reflect.KProperty
 import kotlin.reflect.full.hasAnnotation
 import kotlin.reflect.full.primaryConstructor
 
 inline fun <reified R> aggregate(
     steps: List<Step<*, *>>,
-    size: Int = Int.MAX_VALUE, // No limit for now
+    size: Int,
 ): R {
     when {
         !R::class.isData ->
