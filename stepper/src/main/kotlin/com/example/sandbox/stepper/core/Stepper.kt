@@ -1,7 +1,5 @@
 package com.example.sandbox.stepper.core
 
-import com.example.sandbox.stepper.Milestone
-
 class Stepper<S>(
     private val roadmap: Milestone<S>,
 ) {
@@ -19,12 +17,24 @@ class Stepper<S>(
         }
 
     val current: Milestone<S>
-        get() = steps.last()
-            .milestone
+        get() = if (steps.isEmpty()) {
+            roadmap
+        } else {
+            val cur = steps.last()
+                .milestone
+            cur.next ?: cur
+        }
 
-    fun next(step: Step<*, S>) {
+    val isLast: Boolean
+        get() = steps.size == size
+
+    inline fun <reified C> next(content: C) {
+        val step = Step(
+            content = content,
+            milestone = current,
+        )
         steps.add(step)
-        if(!checkIntegrity())
+        if (!checkIntegrity())
             throw IllegalStateException("Stepper is not working properly")
     }
 
@@ -32,7 +42,7 @@ class Stepper<S>(
         steps.removeAt(steps.size - 1)
     }
 
-    private fun checkIntegrity(): Boolean {
+    fun checkIntegrity(): Boolean {
         var cursor: Milestone<*>? = roadmap
         steps.forEach { step ->
             if (cursor == null) return false

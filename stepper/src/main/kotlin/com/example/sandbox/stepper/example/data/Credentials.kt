@@ -1,4 +1,4 @@
-package com.example.sandbox.stepper.example
+package com.example.sandbox.stepper.example.data
 
 import com.example.sandbox.stepper.core.StepContent
 
