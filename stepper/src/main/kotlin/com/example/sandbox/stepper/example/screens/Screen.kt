@@ -13,7 +13,9 @@ abstract class Screen {
     }
 
     open fun render() {
-        println("Basic screen rendering $name screen")
+        println("||==================================||")
+        println("||\t\t\t$name screen\t\t\t||")
+        println("||==================================||")
     }
 
 
