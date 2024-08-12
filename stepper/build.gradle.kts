@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm")
+    kotlin("multiplatform")
     alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
@@ -10,14 +10,19 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(libs.kotlinx.serialization.json)
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
 kotlin {
     jvmToolchain(17)
+
+    jvm()
+
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.kotlinx.serialization.json)
+        }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
+    }
 }

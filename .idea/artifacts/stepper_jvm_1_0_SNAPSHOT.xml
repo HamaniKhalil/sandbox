@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="stepper-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/stepper/build/libs</output-path>
+    <root id="archive" name="stepper-jvm-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="sandbox.stepper.jvmMain" />
+    </root>
+  </artifact>
+</component>

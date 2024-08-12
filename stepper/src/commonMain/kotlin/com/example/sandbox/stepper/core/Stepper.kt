@@ -76,6 +76,9 @@ class Stepper<S>(
                 }
             }
 
+        fun addMilestones(milestones: List<Milestone<S>>) =
+            apply { milestones.forEach { addMilestone(it) } }
+
         fun build(): Milestone<S> = root
 
     }
