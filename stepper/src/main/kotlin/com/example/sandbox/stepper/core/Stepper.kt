@@ -1,7 +1,11 @@
 package com.example.sandbox.stepper.core
 
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
+
 class Stepper<S>(
     private val roadmap: Milestone<S>,
+    val contentTransformer: (Json, Any) -> JsonElement,
 ) {
     val steps: MutableList<Step<*, S>> = mutableListOf()
 
@@ -28,7 +32,7 @@ class Stepper<S>(
     val isLast: Boolean
         get() = steps.size == size
 
-    inline fun <reified C> next(content: C) {
+    inline fun <@StepContent reified C> next(content: C) {
         val step = Step(
             content = content,
             milestone = current,
@@ -53,7 +57,7 @@ class Stepper<S>(
     }
 
     inline fun <reified T> aggregate(): T =
-        aggregate(steps, size)
+        aggregate(steps, contentTransformer)
 
     class RoadmapBuilder<S> {
 

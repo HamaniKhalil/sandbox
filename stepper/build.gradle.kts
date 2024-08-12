@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 group = "org.example"
@@ -10,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("reflect"))
+    implementation(libs.kotlinx.serialization.json)
     testImplementation(kotlin("test"))
 }
 
