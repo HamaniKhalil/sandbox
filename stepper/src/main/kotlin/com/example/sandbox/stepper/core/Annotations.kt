@@ -1,41 +1,24 @@
 package com.example.sandbox.stepper.core
 
-import kotlin.reflect.KClass
-import kotlin.reflect.KProperty
-import kotlin.reflect.full.hasAnnotation
-import kotlin.reflect.full.memberProperties
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.MetaSerializable
 
+@OptIn(ExperimentalSerializationApi::class)
 @Target(
     AnnotationTarget.CLASS,
-    AnnotationTarget.PROPERTY,
+    AnnotationTarget.PROPERTY, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.VALUE_PARAMETER,
 )
+@MetaSerializable
 annotation class StepContent(
-    val name: String,
+    val name: String = "",
 )
 
+@OptIn(ExperimentalSerializationApi::class)
 @Target(
     AnnotationTarget.CLASS,
     AnnotationTarget.PROPERTY,
     AnnotationTarget.FUNCTION,
+    AnnotationTarget.TYPE_PARAMETER,
 )
+@MetaSerializable
 annotation class AggregationResult
-
-
-fun KClass<*>.getNames(): List<Pair<KProperty<*>, String>> {
-    val result = mutableListOf<Pair<KProperty<*>, String>>()
-    memberProperties
-        .forEach { prop ->
-            if (prop.hasAnnotation<StepContent>()) {
-                val name = (prop.annotations.first {it is StepContent } as StepContent).name
-                result += prop to name
-            }
-
-            (prop.returnType.classifier as? KClass<*>)
-                ?.let { propClass ->
-                    if (propClass != this)
-                        result += propClass.getNames()
-                }
-        }
-    return result
-}
-
