@@ -1,5 +1,7 @@
 package com.example.sandbox.stepper.core
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 
@@ -20,30 +22,26 @@ class Stepper<S>(
             return steps
         }
 
-    val current: Milestone<S>
-        get() = if (steps.isEmpty()) {
-            roadmap
-        } else {
-            val cur = steps.last()
-                .milestone
-            cur.next ?: cur
-        }
+    var current: MutableState<Milestone<S>?> = mutableStateOf(roadmap)
 
-    val isLast: Boolean
-        get() = steps.size == size
+    val currentStep: Step<*, *>?
+        get() = steps.firstOrNull { it.milestone.support == current.value?.support }
 
     inline fun <@StepContent reified C> next(content: C) {
+        if (current.value == null) throw IllegalStateException("")
         val step = Step(
             content = content,
-            milestone = current,
+            milestone = current.value!!,
         )
+        steps.removeIf { it.milestone == current.value }
         steps.add(step)
+        current.value = step.milestone.next
         if (!checkIntegrity())
             throw IllegalStateException("Stepper is not working properly")
     }
 
     fun previous() {
-        steps.removeAt(steps.size - 1)
+        current.value = steps.last().milestone
     }
 
     fun checkIntegrity(): Boolean {
