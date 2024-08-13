@@ -1,0 +1,7 @@
+kotlin version: 2.0.0
+error message: org.jetbrains.kotlin.backend.common.CompilationException: Back-end: Please report this problem https://kotl.in/issue
+/home/teamcity/agent/work/8a20760945d0aeba/compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/Transition.kt:-1:-1
+Details: Internal error in file lowering: java.lang.OutOfMemoryError: Java heap space
+Caused by: java.lang.OutOfMemoryError: Java heap space
+
+

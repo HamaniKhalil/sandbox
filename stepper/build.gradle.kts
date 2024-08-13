@@ -1,4 +1,5 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     kotlin("multiplatform")
@@ -19,6 +20,18 @@ kotlin {
     jvmToolchain(17)
 
     jvm()
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser {
+            commonWebpackConfig {
+                outputFileName = "stepper.js"
+                devServer?.port = 3000
+            }
+        }
+        nodejs()
+        binaries.executable()
+    }
 
 
     sourceSets {

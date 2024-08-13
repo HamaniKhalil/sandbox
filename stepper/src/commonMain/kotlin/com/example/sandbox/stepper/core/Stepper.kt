@@ -33,7 +33,9 @@ class Stepper<S>(
             content = content,
             milestone = current.value!!,
         )
-        steps.removeIf { it.milestone == current.value }
+        val index = steps.indexOfFirst { it.milestone == current.value }
+        if(index != -1)
+            steps.removeAt(index)
         steps.add(step)
         current.value = step.milestone.next
         if (!checkIntegrity())
