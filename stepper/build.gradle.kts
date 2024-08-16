@@ -28,9 +28,8 @@ kotlin {
                 outputFileName = "stepper.js"
                 devServer?.port = 3000
             }
+            binaries.executable()
         }
-        nodejs()
-        binaries.executable()
     }
 
 
@@ -48,10 +47,6 @@ kotlin {
         jvmMain.dependencies {
             implementation(compose.desktop.common)
             implementation(compose.desktop.currentOs)
-        }
-
-        commonTest.dependencies {
-            implementation(kotlin("test"))
         }
     }
 }

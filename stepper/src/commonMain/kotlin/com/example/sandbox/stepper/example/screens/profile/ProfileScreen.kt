@@ -1,4 +1,4 @@
-package com.example.sandbox.stepper.example.screens
+package com.example.sandbox.stepper.example.screens.profile
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,6 +11,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.sandbox.stepper.example.data.Profile
 
 @Composable
@@ -30,7 +31,10 @@ fun ProfileScreen(
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.spacedBy(
+                space = 30.dp,
+                alignment = Alignment.CenterVertically
+            ),
         ) {
             TextField(
                 value = firstname,
