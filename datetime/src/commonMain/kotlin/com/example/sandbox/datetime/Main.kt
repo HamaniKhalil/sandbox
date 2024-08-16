@@ -33,6 +33,7 @@ fun LocalDateTime.asOffsetDateTime(): String =
 fun main() {
     val aNow = Clock.System.now()
     val aTimeZone = TimeZone.currentSystemDefault()
+    println(aNow)
     println(
         aNow.toLocalDateTime(aTimeZone).asOffsetDateTime()
     )
@@ -40,6 +41,8 @@ fun main() {
     val asString = "2024-08-01T22:26:16+02:00"
 //    val asStringMillis = "2024-08-01T22:26:16.936Z"
     val asStringMillis = "2024-08-12T14:16:18.983084000Z"
+
+    println(Instant.parse(asStringMillis))
 
     val dateTimeComponents = DateTimeComponents.Formats.ISO_DATE_TIME_OFFSET
         .parse(asString)
