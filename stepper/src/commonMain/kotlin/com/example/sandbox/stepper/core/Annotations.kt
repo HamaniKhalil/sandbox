@@ -6,7 +6,9 @@ import kotlinx.serialization.MetaSerializable
 @OptIn(ExperimentalSerializationApi::class)
 @Target(
     AnnotationTarget.CLASS,
-    AnnotationTarget.PROPERTY, AnnotationTarget.TYPE_PARAMETER, AnnotationTarget.VALUE_PARAMETER,
+    AnnotationTarget.PROPERTY,
+    AnnotationTarget.TYPE_PARAMETER,
+    AnnotationTarget.VALUE_PARAMETER,
 )
 @MetaSerializable
 annotation class StepContent(

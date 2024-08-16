@@ -1,11 +1,9 @@
 import kotlinx.datetime.*
-import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.char
+import java.sql.Time
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
-import java.util.*
-
 import java.time.Instant as JavaInstant
 
 fun String.withMillisecondsLocalDateTime(): LocalDateTime =
@@ -27,7 +25,18 @@ fun String.withMillisecondsLocalDateTime(): LocalDateTime =
     }
         .parse(this)
 
+
+fun LocalDateTime.asOffsetDateTime(): String =
+    "${this}${TimeZone.currentSystemDefault().offsetAt(Clock.System.now())}"
+
+
 fun main() {
+    val aNow = Clock.System.now()
+    val aTimeZone = TimeZone.currentSystemDefault()
+    println(
+        aNow.toLocalDateTime(aTimeZone).asOffsetDateTime()
+    )
+
     val asString = "2024-08-01T22:26:16+02:00"
 //    val asStringMillis = "2024-08-01T22:26:16.936Z"
     val asStringMillis = "2024-08-12T14:16:18.983084000Z"
@@ -55,5 +64,10 @@ fun main() {
 
     val epochs = dateTime.date.toEpochDays().toLong()
     println(epochs)
-    println(OffsetDateTime.of(dateTime.toJavaLocalDateTime(), ZoneOffset.systemDefault().rules.getOffset(JavaInstant.now())))
+    println(
+        OffsetDateTime.of(
+            dateTime.toJavaLocalDateTime(),
+            ZoneOffset.systemDefault().rules.getOffset(JavaInstant.now())
+        )
+    )
 }

@@ -1,7 +1,7 @@
 package com.example.sandbox.stepper.core
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 
@@ -22,28 +22,34 @@ class Stepper<S>(
             return steps
         }
 
-    var current: MutableState<Milestone<S>?> = mutableStateOf(roadmap)
+    var _current: Milestone<S> = roadmap
+
+    var current: MutableSharedFlow<Milestone<S>?> = MutableStateFlow(_current)
 
     val currentStep: Step<*, *>?
-        get() = steps.firstOrNull { it.milestone.support == current.value?.support }
+        get() = steps.firstOrNull { it.milestone.support == _current.support }
 
-    inline fun <@StepContent reified C> next(content: C) {
-        if (current.value == null) throw IllegalStateException("")
+
+    suspend inline fun <@StepContent reified C> next(content: C) {
         val step = Step(
             content = content,
-            milestone = current.value!!,
+            milestone = _current,
         )
-        val index = steps.indexOfFirst { it.milestone == current.value }
+        val index = steps.indexOfFirst { it.milestone == _current }
         if(index != -1)
             steps.removeAt(index)
         steps.add(step)
-        current.value = step.milestone.next
+        step.milestone.next?.let {
+            _current = it
+            current.emit(_current)
+        }
         if (!checkIntegrity())
             throw IllegalStateException("Stepper is not working properly")
     }
 
-    fun previous() {
-        current.value = steps.last().milestone
+    suspend fun previous() {
+        _current = steps.last().milestone
+        current.emit(_current)
     }
 
     fun checkIntegrity(): Boolean {
