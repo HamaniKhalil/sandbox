@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="chat-jvm">
+    <output-path>$PROJECT_DIR$/chat/build/libs</output-path>
+    <root id="archive" name="chat-jvm.jar">
+      <element id="module-output" name="sandbox.chat.jvmMain" />
+    </root>
+  </artifact>
+</component>

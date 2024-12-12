@@ -11,3 +11,8 @@ include("stepper")
 include("uuid")
 include("settings")
 include("datetime")
+include("chat")
+include("chat:client")
+findProject(":chat:client")?.name = "client"
+include("chat:server")
+findProject(":chat:server")?.name = "server"
