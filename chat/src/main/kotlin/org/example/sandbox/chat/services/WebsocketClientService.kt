@@ -39,4 +39,9 @@ class WebsocketClientService(
     suspend fun send(message: String) {
         out.send(Frame.Text(message))
     }
+
+    suspend fun close() {
+        if (::out.isInitialized)
+            out.send(Frame.Close(CloseReason(CloseReason.Codes.GOING_AWAY, "Client app is closing")))
+    }
 }

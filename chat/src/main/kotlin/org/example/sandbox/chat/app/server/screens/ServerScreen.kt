@@ -9,20 +9,20 @@ import androidx.compose.runtime.*
 
 @Composable
 fun ServerScreen(
-    onStartServer: (Int) -> Unit,
+    onStartServer: () -> Unit,
 ) {
 
-    var id by remember { mutableStateOf("") }
+//    var id by remember { mutableStateOf("") }
 
     Surface {
 
         Column {
-            TextField(
-                value = id,
-                onValueChange = { id = it }
-            )
+//            TextField(
+//                value = id,
+//                onValueChange = { id = it }
+//            )
             Button(
-                onClick = { onStartServer(id.toInt()) }
+                onClick = { onStartServer() }
             ) {
                 Text("Start server")
             }
