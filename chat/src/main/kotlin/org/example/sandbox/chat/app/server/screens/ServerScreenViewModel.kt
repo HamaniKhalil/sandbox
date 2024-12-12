@@ -10,9 +10,9 @@ class ServerScreenViewModel : ViewModel() {
 
     private val websocketService: WebsocketServerService = WebsocketServerService()
 
-    fun startServer(id: Int) {
+    fun startServer() {
         viewModelScope.launch(Dispatchers.IO) {
-            websocketService.startServer(id)
+            websocketService.startServer()
         }
     }
 
