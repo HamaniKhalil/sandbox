@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="siview-jvm">
+    <output-path>$PROJECT_DIR$/animations/siview/build/libs</output-path>
+    <root id="archive" name="siview-jvm.jar">
+      <element id="module-output" name="sandbox.animations.siview.jvmMain" />
+    </root>
+  </artifact>
+</component>
