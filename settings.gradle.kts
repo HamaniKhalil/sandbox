@@ -3,16 +3,21 @@ plugins {
 }
 
 rootProject.name = "sandbox"
-include("annotations")
-include("flows")
-include("ktor")
-include("serialization")
-include("stepper")
-include("uuid")
-include("settings")
-include("datetime")
-include("chat")
-include("chat:client")
+include(":annotations")
+include(":flows")
+include(":ktor")
+include(":serialization")
+include(":stepper")
+include(":uuid")
+include(":playground")
+include(":settings")
+include(":datetime")
+include(":chat")
+include(":chat:client")
 findProject(":chat:client")?.name = "client"
-include("chat:server")
+include(":chat:server")
 findProject(":chat:server")?.name = "server"
+include(":animations")
+include(":animations:siview")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
