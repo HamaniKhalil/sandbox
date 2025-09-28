@@ -18,10 +18,7 @@ import themes.secondaryColor
 import themes.ternaryColor
 
 @Composable
-fun Logo(
-    size: Int = 300,
-    scale: Float = 1f,
-) {
+fun Logo() {
 
     Box(
         modifier = Modifier
@@ -38,6 +35,8 @@ fun Logo(
             darkGray,
         )
 
+        val scale = 1f
+        val size = 300 * scale
         val innerSize = size * 0.7f
         val irisSize = innerSize * 0.6f
         val pupilSize = irisSize * 0.3f
